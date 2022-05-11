@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Revenus des asistantes maternelles agréées</title>
+  <style>
+    .cell{
+      border: 1px solid black;
+    }
+    .cell-big{
+      border: 2px solid black;
+    }
+    .align{
+      display: flex;
+      align-items: center;
+    }
+    .cell-a{
+      width: 1000px;
+    }
+    .dimension{
+      height: 10px;
+      width: 10px;
+    }
+    input:invalid {
+      border: red solid 1px;
+    }
+    h6{
+      font-size: 25px !important;
+    }
+    @media print {
+      label{
+        font-size: 10px;
+      }
+      h2{
+        font-size: 20px !important;
+      }
+      .col-print-1 {width:8% !important;}
+      .col-print-2 {width:16% !important;}
+      .col-print-3 {width:25% !important;}
+      .col-print-4 {width:33% !important;}
+      .col-print-5 {width:42% !important;}
+      .col-print-6 {width:50% !important;}
+      .col-print-7 {width:58% !important;}
+      .col-print-8 {width:66% !important;}
+      .col-print-9 {width:75% !important;}
+      .col-print-10{width:83% !important;}
+      .col-print-11{width:92% !important;}
+      .col-print-12{width:100% !important;}
+      h6{
+        font-size: 15px !important;
+      }
+      input, span {
+        font-size: 7px !important;
+        font-weight: bold !important;
+      }
+
+      
+    }
+
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  <script type="text/javascript"src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" ></script>
+
+
+</head>
+<body>
+
+  <main class="container">
+    <div class="bg-light p-5 rounded">
+      <div class="row">
+        <div class="col-print-6 col-2  ">
+
+          <h5>Taux horaire smic :</h5>
+          <input type="text" pattern="^[0-9]+(([\.\,]{1})([0-9]*)){0,1}$" id="smic" class="form-control "  onchange="update()">
+        </div>
+        <div class="col-1 ms-auto d-print-none">
+          <button type="button" class="btn btn-light" aria-label="update" onclick="update()">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="60" height="60" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+             <g>
+              <g>
+                <path d="M408.973,142.689C368.113,101.829,313.785,79.326,256,79.326h-31.717l50.907-51.032L246.826,0L147.68,99.389
+                l97.852,99.488l28.563-28.093l-50.551-51.396H256c97.198,0,176.275,79.076,176.275,176.275S353.198,471.938,256,471.938
+                S79.725,392.861,79.725,295.659v-20.031l-40.062,0.004v20.031c0,57.786,22.503,112.113,63.364,152.973
+                C143.887,489.497,198.215,512,256,512c57.785,0,112.113-22.503,152.973-63.364c40.861-40.861,63.364-95.188,63.364-152.973
+                S449.834,183.55,408.973,142.689z"/>
+              </g>
+            </g>
+          </svg>
+        </button>
+
+      </div>
+      <div class="col-1   d-print-none">
+        <button type="button" class="btn btn-light" aria-label="clear" onclick="clearForm()">
+          <svg width="60" height="60"  viewBox="-40 0 427 427.00131"  xmlns="http://www.w3.org/2000/svg"><path d="m232.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0"/><path d="m114.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0"/><path d="m28.398438 127.121094v246.378906c0 14.5625 5.339843 28.238281 14.667968 38.050781 9.285156 9.839844 22.207032 15.425781 35.730469 15.449219h189.203125c13.527344-.023438 26.449219-5.609375 35.730469-15.449219 9.328125-9.8125 14.667969-23.488281 14.667969-38.050781v-246.378906c18.542968-4.921875 30.558593-22.835938 28.078124-41.863282-2.484374-19.023437-18.691406-33.253906-37.878906-33.257812h-51.199218v-12.5c.058593-10.511719-4.097657-20.605469-11.539063-28.03125-7.441406-7.421875-17.550781-11.5546875-28.0625-11.46875h-88.796875c-10.511719-.0859375-20.621094 4.046875-28.0625 11.46875-7.441406 7.425781-11.597656 17.519531-11.539062 28.03125v12.5h-51.199219c-19.1875.003906-35.394531 14.234375-37.878907 33.257812-2.480468 19.027344 9.535157 36.941407 28.078126 41.863282zm239.601562 279.878906h-189.203125c-17.097656 0-30.398437-14.6875-30.398437-33.5v-245.5h250v245.5c0 18.8125-13.300782 33.5-30.398438 33.5zm-158.601562-367.5c-.066407-5.207031 1.980468-10.21875 5.675781-13.894531 3.691406-3.675781 8.714843-5.695313 13.925781-5.605469h88.796875c5.210937-.089844 10.234375 1.929688 13.925781 5.605469 3.695313 3.671875 5.742188 8.6875 5.675782 13.894531v12.5h-128zm-71.199219 32.5h270.398437c9.941406 0 18 8.058594 18 18s-8.058594 18-18 18h-270.398437c-9.941407 0-18-8.058594-18-18s8.058593-18 18-18zm0 0"/><path d="m173.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0"/></svg>
+        </button>
+
+      </div>
+
+    </div>
+    <h2>Revenu :</h2>
+    <div class="row">
+
+      <div class="col-2 col-print-2">
+        <label for="salaire_net" class="form-label">Salaire net:</label>
+        <input type="text" pattern="^[0-9]+(([\.\,]{1})([0-9]*)){0,1}$" class="form-control" id="salaire_net" name="salaire_net"  onchange="update()"/>
+      </div>
+      <div class="col-2 col-print-2">
+        <label for="conges" class="form-label">Congés payés:</label>
+        <input type="text" pattern="^[0-9]+(([\.\,]{1})([0-9]*)){0,1}$" class="form-control" id="conges" name="conges"  onchange="update()"/>
+      </div>
+      <div class="col-2 col-print-2">
+        <label for="indemAbs" class="form-label">Indemnité absence:</label>
+        <input type="text" pattern="^[0-9]+(([\.\,]{1})([0-9]*)){0,1}$" class="form-control" id="indemAbs" name="indemAbs"  onchange="update()"/>
+      </div>
+      <div class="col-2 col-print-2">
+        <label for="csgcrds" class="form-label">CSG et CRDS:</label>
+        <input type="text" pattern="^[0-9]+(([\.\,]{1})([0-9]*)){0,1}$" class="form-control" id="csgcrds" name="csgcrds"  onchange="update()"/>
+      </div>
+
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell ">
+          <span id="a1"></span>
+        </div>
+        <div class="col-3 col-print-4 cell align"> A1</div>
+      </div>
+    </div>
+    <div class="row mb-3">
+
+      <div class="col-4">
+        <label for="indemNourriture" class="form-label">Indemnité de nourriture et d'entretien:</label>
+        <input type="text" pattern="^[0-9]+(([\.\,]{1})([0-9]*)){0,1}$" class="form-control" id="indemNourriture" name="indemNourriture"  onchange="update()" />
+      </div>
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell">
+          <span id="a2"></span>
+        </div>
+        <div class="col-3 col-print-4 cell align"> A2</div>
+      </div>
+
+      <div class="row">
+
+      </div >
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell-big ">
+          <span id="a3" class="a3"></span>
+        </div>
+        <div class="col-3 col-print-4 cell-big align"> A3</div>
+      </div>
+    </div>
+
+
+
+    <h2>Nombre de jours de garde de l'enfant :</h2>
+    <div class="row mb-3">
+      <div class="col-12">
+        <label for="jourshuit" class="form-label">Nombre de jour de garde de plus de 8 heures et de moins de 24 heures:</label>
+      </div>
+      <div class="col-2">
+        <input type="text" pattern="^[0-9]+(([\.\,]{1})([0-9]*)){0,1}$" class="form-control" id="jourshuit" name="jourshuit"  onchange="update()" />
+      </div>
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell">
+          <span id="b1"></span>
+        </div>
+        <div class="col-3 col-print-4 cell align"> B1</div>
+      </div>
+      <div class="col-12">
+
+        <label for="joursmoinshuit" class="form-label">Garde de moins de 8 heures par jour:</label>
+      </div>
+      <div class="col-2">
+        <input type="text" pattern="^[0-9]+(([\.\,]{1})([0-9]*)){0,1}$" class="form-control" id="joursmoinshuit" name="joursmoinshuit"   onchange="update()" />
+      </div>
+      <div class="col-2  col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell">
+          <span id="b2"></span>
+        </div>
+        <div class="col-3 col-print-4 cell align"> B2</div>
+      </div>
+      <div class="row"></div>
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell-big">
+          <span id="b3" class="b3"></span>
+        </div>
+        <div class="col-3 col-print-4 cell-big align"> B3</div>
+      </div>
+
+
+      <div class="col-12">
+        <label for="joursentiers" class="form-label">Nombre de jours de garde de 24 heures consécutives:</label>
+      </div>
+      <div class="col-2">
+        <input type="text" pattern="^[0-9]+(([\.\,]{1})([0-9]*)){0,1}$" class="form-control" id="joursentiers" name="joursentiers"   onchange="update()" />
+      </div>
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell">
+          <span id="b4" class="b4"></span>
+        </div>
+        <div class="col-3 col-print-4 cell align"> B4</div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h2>Calcul de la somme forfaitaire à déduire:</h2>
+      </div>
+      <div class="col-auto">
+        <h6>Garde d'enfant handicapé :</h6>
+        <input type="radio"  id="ish" name="ish" value="true" onchange="update()">
+        <label for="ish">Oui</label>
+        <input type="radio" id="isnh" name="ish" value="false" checked="" onchange="update()">
+        <label for="ish">Non</label>
+      </div>          
+    </div>
+
+    <!-- ENFANT NON HANDICAPE</!-->
+    <div class="row mt-2 noh">
+      <div class="col-auto">
+        <label for="casge" class="form-label">Cas général: ( nombre de jours):</label>
+        <span class="smic"></span> &#8364; x 3 x <b><span class="b3"></span></b> jours
+      </div>  
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell">
+          <span id="c1"></span>
+        </div>
+        <div class="col-3 col-print-4 cell align"> C1</div>
+      </div>
+      <div class="row"></div>
+      <div class="col-auto">
+        <label for="casjours" class="form-label">Garde de 24 H: ( nombre de jours):</label>
+        <span class="smic"></span> &#8364; x 4 x <b><span class="b4"></span></b> jours
+      </div>
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell">
+          <span id="c2"></span>
+        </div>
+        <div class="col-3 col-print-4 cell align"> C2</div>
+      </div>
+    </div>
+    <!-- ENFANT HANDICAPE</!-->
+    <div class="h row mt-2 d-none">
+      <div class="col-auto">
+        <label  class="form-label">Cas général: ( nombre de jours):</label>
+        <span class="smic"></span> &#8364; x 4 x <b><span class="b3"></span></b> jours
+      </div>
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell">
+          <span id="c3"></span>
+        </div>
+        <div class="col-3 col-print-4 cell align"> C3</div>
+      </div>
+      <div class="row"></div>
+      <div class="col-auto">
+        <label  class="form-label">Garde de 24 H: ( nombre de jours):</label>
+        <span class="smic"></span> &#8364; x 5 x <b><span class="b4"></span></b> jours
+      </div>
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell">
+          <span id="c4"></span>
+        </div>
+        <div class="col-3 col-print-4 cell align"> C4</div>
+      </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+
+
+      <div class="col-2 col-print-4 row  ms-auto">
+        <div class="col-9 col-print-8 cell-big">
+          <span id="c5" class="c5"></span>
+        </div>
+        <div class="col-3 col-print-4 cell-big align"> C5</div>
+      </div>
+    </div>
+
+    <h2>Somme à déclarer à la rubrique " * 1 SALAIRES":</h2>
+    <div class="row mt-4">
+      <div class="col-1 cell align">
+        <span class="a3"></span>
+      </div>
+      <div class="col-1 align">
+        -
+      </div>
+      <div class="col-auto cell align">
+        <span class="c5"></span>
+      </div>
+      <div class="col-1 align">
+        =
+      </div>
+      <div class="col-2 cell-big">
+        <span id="finale"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<script>
+  function update() {
+    var smic = parseFloat($("#smic").val()) || 0;
+    $(".smic").text(smic);
+
+    var salaire_net = parseFloat($("#salaire_net").val()) || 0;
+    var conges =  parseFloat($("#conges").val()) || 0;
+    var indemAbs = parseFloat($("#indemAbs").val()) || 0;
+    var csgcrds = parseFloat($("#csgcrds").val()) || 0;
+    var a1 = salaire_net + conges + indemAbs + csgcrds;
+    var a2 = parseFloat($("#indemNourriture").val()) || 0;
+    var a3 = a1 +a2; 
+
+    $("#a1").text(a1);
+    $("#a2").text(a2);
+    $(".a3").text(a3 );
+
+    var b1 = parseFloat($("#jourshuit").val()) || 0;
+    var joursmoinshuit =  parseFloat($("#joursmoinshuit").val()) || 0;
+    var b4 = parseFloat($("#joursentiers").val()) || 0;
+
+    var b2 = 0; 
+    if(joursmoinshuit !== NaN){
+      b2 = joursmoinshuit / 8;
+    }
+    var b3= b1 + b2;
+
+    $("#b1").text(b1);
+    $("#b2").text(b2.toFixed(2));
+    $(".b3").text(b3);
+    $(".b4").text(b4 );
+
+    var isH = $('input[name=ish]:checked').val() === 'true';
+    var c1;
+    var c2;
+    var c3;
+    var c4;
+    var c5 = 0;
+    if(isH){
+      $(".noh").addClass("d-none");
+      $(".h").removeClass("d-none");
+      c3 = smic * 4 * b3;
+      c3 = parseFloat(c3.toFixed(2));
+      c4 = smic * 5 * b4; 
+      c4 = parseFloat(c4.toFixed(2));
+      c5 = c3 +c4;
+      $("#c3").text(c3);
+      $("#c4").text(c4);
+      $(".c5").text(c5);
+
+    }
+    else{
+      $(".h").addClass("d-none");
+      $(".noh").removeClass("d-none");
+      c1 = smic * 3 * b3;
+      c1 = parseFloat(c1.toFixed(2));
+      c2 = smic * 4 * b4;
+      c2 = parseFloat(c2.toFixed(2));
+      c5 = c1   + c2; 
+      $("#c1").text(c1);
+      $("#c2").text(c2);
+      $(".c5").text(c5);
+    }
+    
+    var finale = a3 - c5;
+    finale = finale.toFixed(2);
+    $("#finale").text(finale);
+  }
+
+  function clearForm(){
+    console.log("hello");
+    $("#smic").val(0);
+    $(".smic").text(0);
+
+    $("#salaire_net").val(0);
+    $("#conges").val(0);
+    $("#indemAbs").val(0);
+    $("#csgcrds").val(0);
+    $("#indemNourriture").val(0);
+
+    $("#a1").text(0);
+    $("#a2").text(0);
+    $(".a3").text(0);
+
+    $("#jourshuit").val(0);
+    $("#joursmoinshuit").val(0);
+    $("#joursentiers").val(0);
+
+    $("#b1").text(0);
+    $("#b2").text(0);
+    $(".b3").text(0);
+    $(".b4").text(0);
+
+    $("#c1").text(0);
+    $("#c2").text(0);
+    $("#c3").text(0);
+    $("#c4").text(0);
+    $(".c5").text(0);
+    $("#finale").text(0);
+
+  }
+</script>
+</body>
+</html> 
